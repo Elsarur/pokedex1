@@ -1,6 +1,7 @@
 from app import mongo
 from app.models.super_clase import SuperClase
 
+
 #creamos la clase pokemon
 class Pokemon(SuperClase):
     def __init__(self):
