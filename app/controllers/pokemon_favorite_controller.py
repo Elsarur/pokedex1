@@ -25,7 +25,7 @@ def create():
 @bp.route("/delete/<string:pokemon_favorite_id>", methods = ["DELETE"]) 
 def delete(pokemon_favorite_id):
     pokemon_favorite_model.delete(ObjectId(pokemon_favorite_id)) 
-    return RM.success("Yeiii, pokemon eliminado con éxito jiji")
+    return RM.success("Pokemon favorito eliminado")
 
 #Get one
 @bp.route("/get/<string:user_id>", methods = ["GET"])
