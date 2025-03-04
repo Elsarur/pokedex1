@@ -32,7 +32,11 @@ def create():
 @jwt_required()
 def delete(pokemon_favorite_id):
     pokemon_favorite_model.delete(ObjectId(pokemon_favorite_id)) 
+<<<<<<< HEAD
     return RM.success("Pokemon favorito eliminado")
+=======
+    return RM.success("Pokemon eliminado con exito")
+>>>>>>> 8534328140aee1ea4297df6647681323e20bc34a
 
 #Get all
 @bp.route("/get/<string:user_id>", methods = ["GET"])
