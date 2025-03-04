@@ -4,3 +4,5 @@ Flask-PyMongo
 flask-cors #
 python-dotenv #Nos permite usar el .env del proyecto #venv
 marshmallow #Nos permite serializar y deserializar objetos
+flask-jwt-extended #crea tokens de autenticación
+bcrypt #Nos permite encriptar contraseñas

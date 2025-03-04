@@ -1,7 +1,7 @@
 from app import mongo
-from app.models.super_clase import SuperClase
+from app.models.super_clase import SuperClass
 
-class User(SuperClase):
+class Users(SuperClass):
     def __init__(self):
         super().__init__("users")
 
@@ -10,4 +10,5 @@ class User(SuperClase):
     
     def get_by_email_password(self, email, password):
         user = self.collection.find_one({"email": email, "password": password})
+        user["_id"] = str(user["_id"])
         return user

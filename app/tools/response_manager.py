@@ -4,14 +4,14 @@ from flask import jsonify
 
 class ResponseManager:
     def success(self, data):
-        if type(data) == "str":
+        if isinstance(data, str):
             data = {
                 "message": data
             }
         return jsonify(data), 200
     
     def error(self, data="Invalid request"):
-        if type(data) == "str":
+        if type(data, str):
             data = {
                 "message": data
             }
@@ -19,7 +19,7 @@ class ResponseManager:
     
 
     def error_server(self, data="SERVER ERROR"): 
-        if type(data) == "str":
+        if type(data, str):
             data = {
                 "message": data
             }
