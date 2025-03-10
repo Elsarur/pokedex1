@@ -22,7 +22,7 @@ def login():
     if not email or not password:
         return RM.error("Es necesario enviar todas las credenciales")
     
-    user = users_model.get_by_email_password(email, password)
+    user = users_model.get_by_email(email)
     if not user:
         return RM.error("No se encontro un usuario")
     if not EM.compare_hashes(password, user["password"]):
@@ -48,18 +48,18 @@ def update():
         data = user_schema.load(request.json)
         data["password"] = EM.create_hash(data["password"])
         user = users_model.update( ObjectId(user_id), data)
-        return RM.success({"data": user})
+        return RM.success(user)
     except ValidationError as err:
         return RM.error("Los parametros enviados no son correctos")
 
-@bp.route('/delete/', methods=['DELETE'])
+@bp.route('/delete', methods=['DELETE'])
 @jwt_required()
 def delete():
     user_id = get_jwt_identity()
     users_model.delete(ObjectId(user_id))
     return RM.success("Usuario eliminado con exito")
 
-@bp.route('/get/', methods=['GET'])
+@bp.route('/get', methods=['GET'])
 @jwt_required()
 def get_user():
     user_id = get_jwt_identity()

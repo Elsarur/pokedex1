@@ -1,5 +1,5 @@
 from app import mongo
-from app.models.super_clase import SuperClass
+from app.models.super_class import SuperClass
 
 #creamos la clase pokemon
 class Pokemon(SuperClass):

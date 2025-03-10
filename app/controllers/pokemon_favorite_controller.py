@@ -21,7 +21,7 @@ def create():
         data["user_id"] = user_id
         pokemon_favorite_id = pokemon_favorite_model.create(data) 
         
-        return RM.succes({pokemon_favorite_id:str(pokemon_favorite_id)}) 
+        return RM.succes({"_id":str(pokemon_favorite_id)}) 
 
     except ValidationError as err:
         print(err)
@@ -32,16 +32,12 @@ def create():
 @jwt_required()
 def delete(pokemon_favorite_id):
     pokemon_favorite_model.delete(ObjectId(pokemon_favorite_id)) 
-<<<<<<< HEAD
     return RM.success("Pokemon favorito eliminado")
-=======
-    return RM.success("Pokemon eliminado con exito")
->>>>>>> 8534328140aee1ea4297df6647681323e20bc34a
 
 #Get all
-@bp.route("/get/<string:user_id>", methods = ["GET"])
+@bp.route("/get", methods = ["GET"])
 @jwt_required()
-def get_pokemon_favorite(user_id):
+def get_pokemon_favorite():
    user_id = get_jwt_identity()
    pokemon_favorite = pokemon_favorite_model.find_all(ObjectId(user_id))
    return RM.success(pokemon_favorite)
